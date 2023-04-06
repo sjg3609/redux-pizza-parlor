@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
-import SelectPizza from './SelectPizza/SelectPizza';
-import Home from './SelectPizza/Home/Home';
+import SelectPizza from '../SelectPizza/SelectPizza';
+import Home from '../Home/Home';
 
 function App() {
 
