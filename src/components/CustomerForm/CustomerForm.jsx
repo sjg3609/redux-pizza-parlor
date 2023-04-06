@@ -1,6 +1,9 @@
 import axios from 'axios';
+import { useState } from 'react';
 
 function CustomerForm() {
+
+    // const []
 
     const submitInfo = (event) => {
         event.preventDefault();
@@ -11,7 +14,7 @@ function CustomerForm() {
     const addCustomer = () => {
         axios({
             method: 'POST',
-            url: '/orders',
+            url: '/api/orders',
             data: {}
         }).then((response) => {
             console.log(response);
@@ -22,13 +25,13 @@ function CustomerForm() {
     }
 
     const clearAllFields = () => {
-        
+
     } 
 
     return (
         <div>
             <h2>Step 2: Customer Information</h2>
-            <form onSubmit="submitInfo">
+            <form onSubmit={submitInfo}>
                 <input type="text" value="Name"/>
                 <br/>
                 <input type="text" value="Street Address"/>
@@ -39,6 +42,7 @@ function CustomerForm() {
                 <br/>
                 <input type="checkbox" value="Pickup"/>Pickup
                 <input type="checkbox" value="Delivery"/>Delivery
+                <input type="submit" value="Submit"/>
             </form>
             <button onClick="">Next</button>
         </div>

@@ -23,9 +23,6 @@ function App() {
             <Link to="/select">Menu</Link>
           </li>
           <li>
-            <Link to="/customersInfo">Info</Link>
-          </li>
-          <li>
             <Link to="/checkout">Checkout</Link>
           </li>
         </ul>
