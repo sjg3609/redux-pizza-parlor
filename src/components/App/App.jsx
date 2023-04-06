@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import CustomerForm from '../CustomerForm/CustomerForm';
 import './App.css';
+
 
 function App() {
 
@@ -23,13 +25,13 @@ function App() {
 
         </Route>
         <Route exact path="/customersInfo">
-
+          <CustomerForm />
         </Route>
         <Route exact path="/checkout">
 
         </Route>
         <Route exact path="admin">
-          
+
         </Route>
       </Router>
       <img src='images/pizza_photo.png' />
