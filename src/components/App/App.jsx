@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
+import SelectPizza from './SelectPizza/SelectPizza';
+import Home from './SelectPizza/Home/Home';
 
 function App() {
 
@@ -16,11 +18,17 @@ function App() {
             <Link to="/">Home</Link>
           </li>
           <li>
+            <Link to="/select">Select Pizza</Link>
+          </li>
+          <li>
             <Link to="/checkout">Checkout</Link>
           </li>
         </ul>
         <Route exact path="/">
-
+          <Home />
+        </Route>
+        <Route exact path="/select">
+          <SelectPizza />
         </Route>
         <Route exact path="/customersInfo">
 
@@ -32,9 +40,6 @@ function App() {
           
         </Route>
       </Router>
-      <img src='images/pizza_photo.png' />
-      <p>Pizza is great.</p>
-  
     </div>
   );
 }
