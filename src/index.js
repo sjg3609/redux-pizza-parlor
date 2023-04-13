@@ -12,6 +12,7 @@ const customerName = (state = '', action) => {
     } else if (action.type === 'CLEAR_FORM') {
         return '';
     }
+    return state;
 }
     const checkoutPrice = (state = 0, action) => {
         if (action.type === 'ADD_PIZZA_TO_CART') {
@@ -35,6 +36,7 @@ const customerName = (state = '', action) => {
         } else if (action.type === 'CLEAR_FORM') {
             return '';
         }
+        return state;
     }
     const cart = (state = [], action) => {
         if (action.type === 'ADD_PIZZA_TO_CART') {
