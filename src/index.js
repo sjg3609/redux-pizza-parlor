@@ -12,52 +12,68 @@ const customerName = (state = '', action) => {
     } else if (action.type === 'CLEAR_FORM') {
         return '';
     }
-    return state;
 }
-
-const streetAddress = (state = [], action) => {
-    if (action.type === 'ADD_STREET_ADDRESS') {
-        return action.payload;
-    } else if (action.type === 'CLEAR_FORM') {
-        return [];
+    const checkoutPrice = (state = 0, action) => {
+        if (action.type === 'ADD_PIZZA_TO_CART') {
+            return state + action.payload.price;
+        }
+        return state;
     }
-    return state;
-}
 
-const city = (state = '', action) => {
-    if (action.type === 'ADD_CITY') {
-        return action.payload;
-    } else if (action.type === 'CLEAR_FORM') {
-        return '';
+    const streetAddress = (state = [], action) => {
+        if (action.type === 'ADD_STREET_ADDRESS') {
+            return action.payload;
+        } else if (action.type === 'CLEAR_FORM') {
+            return [];
+        }
+        return state;
     }
-    return state;
-}
 
-const zipCode = (state = '', action) => {
-    if (action.type === 'SET_ZIP_CODE') {
-        return action.payload;
-    } else if (action.type === 'CLEAR_FORM') {
-        return '';
-    } 
-    return state;
-}
+    const city = (state = '', action) => {
+        if (action.type === 'ADD_CITY') {
+            return action.payload;
+        } else if (action.type === 'CLEAR_FORM') {
+            return '';
+        }
+    }
+    const cart = (state = [], action) => {
+        if (action.type === 'ADD_PIZZA_TO_CART') {
+            return [...state, action.payload.name]
+        } else if (action.type === 'EMPTY_CART') {
+            return [];
+        } else if (action.type === 'UPDATE_CART') {
+            return action.payload;
+        }
+        return state;
+    }
+
+    const zipCode = (state = '', action) => {
+        if (action.type === 'SET_ZIP_CODE') {
+            return action.payload;
+        } else if (action.type === 'CLEAR_FORM') {
+            return '';
+        }
+        return state;
+    }
 
 
 
-const storeInstance = createStore(
-    combineReducers({
-        customerName,
-        streetAddress,
-        city,
-        zipCode,
-    })
-)
+    const storeInstance = createStore(
+        combineReducers({
+            customerName,
+            streetAddress,
+            city,
+            zipCode,
+            cart,
+            checkoutPrice,
+        })
+    )
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    <React.StrictMode>
-    <Provider store={storeInstance}>
-        <App />
-    </Provider>
-    </React.StrictMode>
-);
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(
+        <React.StrictMode>
+            <Provider store={storeInstance}>
+                <App />
+            </Provider>
+        </React.StrictMode>
+    );

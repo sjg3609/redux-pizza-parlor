@@ -5,7 +5,12 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 
+
 function PizzaItem({ pizza }) {
+    const addPizza = () => {
+        
+    }
+    
     return (
         <Card>
             <CardMedia
@@ -22,7 +27,7 @@ function PizzaItem({ pizza }) {
                 </Typography>
                 <CardActions>
                     ${pizza.price}
-                    <Button>
+                    <Button onClick={addPizza}>
                         Buy
                     </Button>
                 </CardActions>

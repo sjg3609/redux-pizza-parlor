@@ -5,6 +5,7 @@ import CustomerForm from '../CustomerForm/CustomerForm.jsx';
 import './App.css';
 import SelectPizza from '../SelectPizza/SelectPizza';
 import Home from '../Home/Home';
+import Price from '../Price/Price';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <h1 className='App-title'>Prime Pizza</h1>
       </header>
       <Router>
+        <Price />
         <ul>
           <li>
             <Link to="/">Home</Link>
