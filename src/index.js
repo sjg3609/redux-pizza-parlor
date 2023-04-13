@@ -8,7 +8,7 @@ import logger from 'redux-logger';
 
 const checkoutPrice = (state = 0, action) => {
     if (action.type === 'ADD_PIZZA_TO_CART') {
-        return state + action.payload.price;
+        return Number(state) + Number(action.payload.price);
     }
     return state;
 }

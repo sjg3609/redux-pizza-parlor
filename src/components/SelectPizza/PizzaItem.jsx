@@ -4,11 +4,16 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 function PizzaItem({ pizza }) {
+    const dispatch = useDispatch();
+    const cart = useSelector(store => store.cart);
+
     const addPizza = () => {
-        
+        dispatch({ type: 'ADD_PIZZA_TO_CART', payload: pizza});
+        console.log(cart);
     }
     
     return (
