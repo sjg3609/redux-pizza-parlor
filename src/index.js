@@ -49,7 +49,7 @@ const customerName = (state = '', action) => {
         return state;
     }
 
-    const zipCode = (state = '', action) => {
+    const zipCode = (state = '55404', action) => {
         if (action.type === 'SET_ZIP_CODE') {
             return action.payload;
         } else if (action.type === 'CLEAR_FORM') {
@@ -58,7 +58,16 @@ const customerName = (state = '', action) => {
         return state;
     }
 
-
+    const type = (state = '', action) => {
+        if (action.type === 'SET_PICKUP') {
+            return action.payload;
+        } else if (action.type === 'SET_DELIVERY') {
+            return action.payload;
+        } else if (action.type === 'CLEAR_FORM') {
+            return '';
+        }
+        return state;
+    }
 
     const storeInstance = createStore(
         combineReducers({
@@ -68,7 +77,9 @@ const customerName = (state = '', action) => {
             zipCode,
             cart,
             checkoutPrice,
-        })
+            type
+        }),
+        applyMiddleware(logger)
     )
 
     const root = ReactDOM.createRoot(document.getElementById('root'));
