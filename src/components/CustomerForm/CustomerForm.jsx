@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function CustomerForm() {
 
@@ -8,7 +9,6 @@ function CustomerForm() {
     const submitInfo = (event) => {
         event.preventDefault();
         addCustomer();
-        clearAllFields();
     }
 
     const addCustomer = () => {
@@ -24,9 +24,6 @@ function CustomerForm() {
         });
     }
 
-    const clearAllFields = () => {
-
-    } 
 
     return (
         <div>
