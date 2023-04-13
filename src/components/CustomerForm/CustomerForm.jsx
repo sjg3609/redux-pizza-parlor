@@ -4,18 +4,34 @@ import { useHistory } from 'react-router-dom';
 
 function CustomerForm() {
 
-    // const []
+    const history = useHistory();
+    const dispatch = useDispatch();
+
+    const customerName = useSelector(store => store.customerName);
+    const streetAddress = useSelector(store => store.streetAddress);
+    const city = useSelector(store => store.city);
+    const zipCode = useSelector(store => store.zipCode);
 
     const submitInfo = (event) => {
         event.preventDefault();
         addCustomer();
     }
 
+    // const nameChange 
+
     const addCustomer = () => {
         axios({
             method: 'POST',
             url: '/api/orders',
-            data: {}
+            data: {
+                customer_name: customerName,
+                street_address: streetAddress,
+                city: city,
+                zip: zipCode,
+                type: type,
+                total: total,
+                pizzas: pizzas,
+            }
         }).then((response) => {
             console.log(response);
         }).catch((error) => {
@@ -24,6 +40,10 @@ function CustomerForm() {
         });
     }
 
+    const nextPage = (event) => {
+        event.preventDefault();
+        history.push('/checkout');
+    }
 
     return (
         <div>
@@ -41,7 +61,7 @@ function CustomerForm() {
                 <input type="checkbox" value="Delivery"/>Delivery
                 <input type="submit" value="Submit"/>
             </form>
-            <button onClick="">Next</button>
+            <button onClick={nextPage}>Next</button>
         </div>
     )
 }
