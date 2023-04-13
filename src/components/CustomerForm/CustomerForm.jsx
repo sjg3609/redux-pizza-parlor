@@ -50,7 +50,6 @@ function CustomerForm() {
         const action = { type: 'SET_DELIVERY', payload: event.target.value };
         dispatch(action);
     }
-
     
 
     const addCustomer = () => {

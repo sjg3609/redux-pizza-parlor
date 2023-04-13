@@ -16,17 +16,7 @@ function App() {
       </header>
       <Router>
         <Price />
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/select">Menu</Link>
-          </li>
-          <li>
-            <Link to="/checkout">Checkout</Link>
-          </li>
-        </ul>
+        <br/>
         <Route exact path="/">
           <Home />
         </Route>
@@ -39,7 +29,7 @@ function App() {
         <Route exact path="/checkout">
 
         </Route>
-        <Route exact path="admin">
+        <Route exact path="/admin">
 
         </Route>
       </Router>

@@ -49,7 +49,7 @@ const customerName = (state = '', action) => {
         return state;
     }
 
-    const zipCode = (state = '55404', action) => {
+    const zipCode = (state = '', action) => {
         if (action.type === 'SET_ZIP_CODE') {
             return action.payload;
         } else if (action.type === 'CLEAR_FORM') {
