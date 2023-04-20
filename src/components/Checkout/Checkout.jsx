@@ -1,9 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom';
+import { Button } from "@mui/material";
 import axios from 'axios';
 
 function Checkout() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
     const customerName = useSelector(store => store.customerName);
     const streetAddress = useSelector(store => store.streetAddress);
     const city = useSelector(store => store.city);
@@ -48,7 +51,9 @@ function Checkout() {
         console.log(cart);
     }
 
-    
+    const previousPage = () => {
+        history.push('/customersInfo')
+    }
 
     return (
 
@@ -75,14 +80,15 @@ function Checkout() {
                             <tr key={order.id}>
                                 <td>{order.name}</td>
                                 <td>{order.price}</td>
-                                <td><button onClick={() => removePizza(order.id, order.price)}>Delete</button></td>
+                                <td><Button onClick={() => removePizza(order.id, order.price)}>Delete</Button></td>
                             </tr>
                             
                         ))
                     }
                 </tbody>
             </table>
-            <button onClick={addCustomer}>Checkout</button>
+            <Button variant="contained" onClick={previousPage}>Back</Button>
+            <Button variant="contained" onClick={addCustomer}>Checkout</Button>
         </>
     )
 }
