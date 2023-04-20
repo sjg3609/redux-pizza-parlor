@@ -6,6 +6,7 @@ import './App.css';
 import SelectPizza from '../SelectPizza/SelectPizza';
 import Home from '../Home/Home';
 import Price from '../Price/Price';
+import Admin from '../Admin/Admin.jsx';
 
 function App() {
 
@@ -30,7 +31,7 @@ function App() {
 
         </Route>
         <Route exact path="/admin">
-
+          <Admin />
         </Route>
       </Router>
     </div>
