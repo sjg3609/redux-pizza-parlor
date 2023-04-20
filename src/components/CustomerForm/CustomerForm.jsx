@@ -53,16 +53,6 @@ function CustomerForm() {
     
 
     const addCustomer = () => {
-        const data = {
-            customer_name: customerName,
-                street_address: streetAddress,
-                city: city,
-                zip: zipCode,
-                type: type,
-                total: checkoutPrice,
-                pizzas: cart,
-        };
-        console.log(data);
         axios({
             method: 'POST',
             url: '/api/order',
