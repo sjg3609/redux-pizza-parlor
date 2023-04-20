@@ -40,7 +40,7 @@ const customerName = (state = '', action) => {
     }
     const cart = (state = [], action) => {
         if (action.type === 'ADD_PIZZA_TO_CART') {
-            return [...state, action.payload.name]
+            return [...state, action.payload]
         } else if (action.type === 'EMPTY_CART') {
             return [];
         } else if (action.type === 'UPDATE_CART') {

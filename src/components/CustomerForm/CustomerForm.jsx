@@ -11,13 +11,9 @@ function CustomerForm() {
     const streetAddress = useSelector(store => store.streetAddress);
     const city = useSelector(store => store.city);
     const zipCode = useSelector(store => store.zipCode);
-    const type = useSelector(store => store.type);
-    const checkoutPrice = useSelector(store => store.checkoutPrice);
-    const cart = useSelector(store => store.cart);
 
     const submitInfo = (event) => {
         event.preventDefault();
-        addCustomer();
         history.push('/checkout');
     }
 
@@ -51,27 +47,6 @@ function CustomerForm() {
         dispatch(action);
     }
     
-
-    const addCustomer = () => {
-        axios({
-            method: 'POST',
-            url: '/api/order',
-            data: {
-                customer_name: customerName,
-                street_address: streetAddress,
-                city: city,
-                zip: zipCode,
-                type: type,
-                total: checkoutPrice,
-                pizzas: cart,
-            }
-        }).then((response) => {
-            console.log(response);
-        }).catch((error) => {
-            console.log(`Error in POST for CustomerForm ${error}`)
-            alert('Something went wrong!');
-        });
-    }
 
     return (
         <div>
