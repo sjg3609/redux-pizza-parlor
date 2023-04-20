@@ -37,7 +37,7 @@ function Checkout() {
             console.log(response);
             // dispatch({type: 'EMPTY CART'});
         }).catch((error) => {
-            console.log(`Error in POST for CustomerForm ${error}`)
+            console.log(`Error in POST for Checkout: ${error}`)
             alert('Something went wrong!');
         });
     }
@@ -53,7 +53,6 @@ function Checkout() {
                 <p>{city}</p>
                 <p>{zipCode}</p>
                 <p>{type}</p>
-
             </div>
             <table id="orders">
                 <thead>
