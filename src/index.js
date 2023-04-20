@@ -69,6 +69,13 @@ const customerName = (state = '', action) => {
         return state;
     }
 
+    const orderList = (state = [], action) => {
+        if (action.type === 'FETCH_ORDERS') {
+            return action.payload;
+        }
+        return state;
+    }
+
     const storeInstance = createStore(
         combineReducers({
             customerName,
@@ -77,7 +84,8 @@ const customerName = (state = '', action) => {
             zipCode,
             cart,
             checkoutPrice,
-            type
+            type,
+            orderList
         }),
         applyMiddleware(logger)
     )
