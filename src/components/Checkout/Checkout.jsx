@@ -13,7 +13,12 @@ function Checkout() {
     const checkoutPrice = useSelector(store => store.checkoutPrice);
     const cart = useSelector(store => store.cart);
 
-    console.log(cart);
+    const pizzas = () => {
+        let pizzaArray = [];
+        for (let i = 0; i < cart.length; i++) {
+            return
+        }
+    }
 
     const addCustomer = () => {
         axios({
@@ -30,18 +35,13 @@ function Checkout() {
             }
         }).then((response) => {
             console.log(response);
-            dispatch({type: 'EMPTY CART'});
+            // dispatch({type: 'EMPTY CART'});
         }).catch((error) => {
             console.log(`Error in POST for CustomerForm ${error}`)
             alert('Something went wrong!');
         });
     }
 
-    // const fetchPizzas () => {
-    //     axios.get('/api/pizzas')
-    // }
-
-    console.log(customerName);
 
     return (
 
@@ -55,14 +55,24 @@ function Checkout() {
                 <p>{type}</p>
 
             </div>
-            <ul>
-                {
-                    cart.map(order => (
-                        <li key={order.id}>{order.name} {order.price}</li>
-                    ))
-                }
-            </ul>
-
+            <table id="orders">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        cart.map(order => (
+                            <tr key={order.id}>
+                                <td>{order.name}</td>
+                                <td>{order.price}</td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </table>
             <button onClick={addCustomer}>Checkout</button>
         </>
     )
