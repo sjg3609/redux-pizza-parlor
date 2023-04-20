@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { TextField, Button, RadioGroup, Radio, FormControlLabel, FormControl } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -38,7 +38,7 @@ function CustomerForm() {
     }
 
     const setPickup = (event) => {
-        const action = { type: 'SET_PICKUP', payload: event.target.value};
+        const action = { type: 'SET_PICKUP', payload: event.target.value };
         dispatch(action);
     }
 
@@ -46,25 +46,38 @@ function CustomerForm() {
         const action = { type: 'SET_DELIVERY', payload: event.target.value };
         dispatch(action);
     }
-    
+
+    const previousPage = () => {
+        history.push('/select')
+    }
+
 
     return (
         <div>
             <h2>Step 2: Customer Information</h2>
-            <form onSubmit={submitInfo}>
-                <input type="text" value={customerName} onChange={nameChange} placeholder="Customer Name"/>
-                <br/>
-                <input type="text" value={streetAddress} onChange={addressChange} placeholder="Street Address"/>
-                <br/>
-                <input type="text" placeholder="City" value={city} onChange={addCity}/>
-                <br/>
-                <input type="text" placeholder="Zip Code" value={zipCode} onChange={addZipCode}/>
-                <br/>
-                <input type="radio" name="Order Type" value="Pickup" onChange={setPickup}/>Pickup
-                <input type="radio" name="Order Type" value="Delivery" onChange={setDelivery}/>Delivery
-                <br/>
-                <input type="submit" value="Submit"/>
-            </form>
+            <FormControl>
+                <TextField variant="standard" type="text" value={customerName} onChange={nameChange} placeholder="Customer Name" />
+                <br />
+                <TextField variant="standard" type="text" value={streetAddress} onChange={addressChange} placeholder="Street Address" />
+                <br />
+                <TextField variant="standard" type="text" placeholder="City" value={city} onChange={addCity} />
+                <br />
+                <TextField variant="standard" type="text" placeholder="Zip Code" value={zipCode} onChange={addZipCode} />
+                <br />
+                <RadioGroup type="radio" name="Order Type" onChange={setPickup}>
+                    <FormControlLabel value="Pickup" control={<Radio />} label="Pickup" />
+                </RadioGroup>
+
+                <RadioGroup type="radio" name="Order Type" onChange={setDelivery}>
+                    <FormControlLabel value="Delviery" control={<Radio />} label="Delivery" />
+                </RadioGroup>
+                <br />
+                <br />
+                <Button type="submit" variant="contained" onClick={submitInfo}>Submit</Button>
+            </FormControl>
+            <br />
+            <br />
+            <Button variant="contained" onClick={previousPage}>Back</Button>
         </div>
     )
 }
