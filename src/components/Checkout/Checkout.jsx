@@ -35,7 +35,7 @@ function Checkout() {
         });
     }
 
-    const removePizza = (id) => {
+    const removePizza = (id, price) => {
         for( var i = 0; i < cart.length; i++){ 
     
             if ( cart[i].id === id) { 
@@ -44,6 +44,7 @@ function Checkout() {
             }
         }
         dispatch({ type: 'UPDATE_CART', payload: cart });
+        dispatch({ type: 'REMOVE_PIZZA', payload: price});
         console.log(cart);
     }
 
@@ -74,7 +75,7 @@ function Checkout() {
                             <tr key={order.id}>
                                 <td>{order.name}</td>
                                 <td>{order.price}</td>
-                                <td><button onClick={() => removePizza(order.id)}>Delete</button></td>
+                                <td><button onClick={() => removePizza(order.id, order.price)}>Delete</button></td>
                             </tr>
                             
                         ))
