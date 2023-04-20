@@ -12,8 +12,8 @@ function PizzaItem({ pizza }) {
     const cart = useSelector(store => store.cart);
 
     const addPizza = () => {
-        dispatch({ type: 'ADD_PIZZA_TO_CART', payload: pizza});
-        console.log(cart);
+        dispatch({ type: 'ADD_PIZZA_TO_CART', payload: { name: pizza.name, price: pizza.price }});
+        console.log(JSON.stringify(cart));
     }
     
     return (

@@ -6,6 +6,7 @@ import './App.css';
 import SelectPizza from '../SelectPizza/SelectPizza';
 import Home from '../Home/Home';
 import Price from '../Price/Price';
+import Checkout from '../Checkout/Checkout.jsx';
 
 function App() {
 
@@ -27,7 +28,7 @@ function App() {
           <CustomerForm />
         </Route>
         <Route exact path="/checkout">
-
+          <Checkout />
         </Route>
         <Route exact path="/admin">
 
