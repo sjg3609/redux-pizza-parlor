@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
 
 function Checkout() {
 
@@ -11,14 +10,8 @@ function Checkout() {
     const zipCode = useSelector(store => store.zipCode);
     const type = useSelector(store => store.type);
     const checkoutPrice = useSelector(store => store.checkoutPrice);
-    const cart = useSelector(store => store.cart);
+    let cart = useSelector(store => store.cart);
 
-    const pizzas = () => {
-        let pizzaArray = [];
-        for (let i = 0; i < cart.length; i++) {
-            return
-        }
-    }
 
     const addCustomer = () => {
         axios({
@@ -35,13 +28,26 @@ function Checkout() {
             }
         }).then((response) => {
             console.log(response);
-            // dispatch({type: 'EMPTY CART'});
+            dispatch({type: 'EMPTY CART'});
         }).catch((error) => {
             console.log(`Error in POST for Checkout: ${error}`)
             alert('Something went wrong!');
         });
     }
 
+    const removePizza = (id) => {
+        for( var i = 0; i < cart.length; i++){ 
+    
+            if ( cart[i].id === id) { 
+        
+                cart.splice(i, 1); 
+            }
+        }
+        dispatch({ type: 'UPDATE_CART', payload: cart });
+        console.log(cart);
+    }
+
+    
 
     return (
 
@@ -59,6 +65,7 @@ function Checkout() {
                     <tr>
                         <th>Name</th>
                         <th>Price</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,7 +74,9 @@ function Checkout() {
                             <tr key={order.id}>
                                 <td>{order.name}</td>
                                 <td>{order.price}</td>
+                                <td><button onClick={() => removePizza(order.id)}>Delete</button></td>
                             </tr>
+                            
                         ))
                     }
                 </tbody>
